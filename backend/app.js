@@ -10,14 +10,10 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 // if no error at the db connection then we start the app
-connectToDb((err) => {
-    if (!err) {
-        app.listen(3000, () => {
-            console.log('Server is running on port 3000');
-        });        
-        db = getDb();
-    }
-})
+connectToDb();
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+});        
 
 
 app.get('/', (req, res) => {
